@@ -25,6 +25,20 @@ export default StyleSheet.create({
       flex: 1,
   },
 
+  mapContainer: {
+    ...StyleSheet.absoluteFillObject,
+    flex:1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+
+  map: {
+    flex:0.5,
+    height: 200,
+    width: 400,
+    marginBottom:7,
+  },
+
   formContainer: {
     paddingTop:8,
     paddingLeft:10,
@@ -42,6 +56,18 @@ export default StyleSheet.create({
     maxHeight: 200,
     maxWidth: null,
     justifyContent: 'flex-end',
+  },
+
+  storeInfoCard: {
+    height: 100,
+    width:400,
+    marginTop: 7,
+    marginBottom: 7,
+    paddingTop:10,
+    paddingLeft: 10,
+    backgroundColor: colors.contentBGColor,
+
+
   },
 
   promotionImg : {

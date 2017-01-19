@@ -23,6 +23,19 @@ export default StyleSheet.create({
       flex: 1,
   },
 
+  mapContainer: {
+    backgroundColor: colors.contentBGColor,
+    ...StyleSheet.absoluteFillObject,
+    height: 200,
+    width: 400,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
+
   formContainer: {
     padding: 10,
   },
