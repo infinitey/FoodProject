@@ -10,15 +10,21 @@ import colors from '../../colors'
 
 import HomeView from './HomeView'
 
+import { push_home, pop_home } from '../../actions/navigation';
+
 class Home extends Component {
   submitLoginInfo() {
     this.props.dispatch(pop())
   }
 
+  onSubmitOrderType = () => {
+    this.props.dispatch(push_home({ key : 'MenuTabContainer' }))
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <HomeView />
+        <HomeView onSubmitOrderType={this.onSubmitOrderType}/>
       </View>
     );
   }

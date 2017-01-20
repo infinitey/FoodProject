@@ -12,12 +12,14 @@ import styles from '../../styles'
 
 import MapView from 'react-native-maps';
 
-class StoreInfoCard extends Component {
+export default class StoreInfoCard extends Component {
 
   render() {
     return (
     <View style={styles.storeInfoCard}>
-      <TouchableOpacity style={{flex:1}}>
+      <TouchableOpacity
+        style={{flex:1}}
+        onPress={this.props.onSelectStore}>
         <Text style={[styles.normalText, {fontWeight: 'bold', paddingBottom:2}]}>Building name</Text>
         <Text style={[styles.normalText, {paddingBottom:2}]}>Address line 1</Text>
         <Text style={[styles.normalText, {paddingBottom:2}]}>Address line 2</Text>
@@ -31,4 +33,4 @@ class StoreInfoCard extends Component {
 }
 
 
-export default connect()(StoreInfoCard)
+//export default connect()(StoreInfoCard)

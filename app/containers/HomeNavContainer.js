@@ -9,6 +9,7 @@ import Header from '../components/headers/NavHeader';
 import Explore from '../components/explore/Explore';
 import Home from '../components/home/Home';
 import TakeOut from '../components/home/TakeOut'
+import MenuTabContainer from './conceptMenu/MenuTabContainer'
 
 const {
   CardStack: NavigationCardStack,
@@ -25,13 +26,14 @@ class HomeNavContainer extends Component {
         return <Home />
       case 'TakeOut':
         return <TakeOut />
+      case 'MenuTabContainer':
+        return <MenuTabContainer/>
     }
   }
 
   _renderHeader = (sceneProps) => {
     const { homeNavState } = this.props
-
-
+    
       return (
         <Header
           pop={this.props.pop_home}

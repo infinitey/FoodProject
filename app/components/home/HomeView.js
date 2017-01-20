@@ -28,9 +28,6 @@ class HomeView extends Component {
         }
     }
 
-  onPressSignUp() {
-
-  }
 
   render() {
     var showDelivery = this.state.showDelivery ?
@@ -84,7 +81,7 @@ class HomeView extends Component {
         </View>
 
         <View style={{flexGrow: 1, flexDirection:'column-reverse'}}>
-          <TouchableHighlight  style={styles.btmButton} onPress={ () => {}}>
+          <TouchableHighlight  style={styles.btmButton} onPress={this.props.onSubmitOrderType}>
             <Text style={styles.buttonText}>Next</Text>
           </TouchableHighlight>
         </View>

@@ -11,13 +11,16 @@ import colors from '../../colors'
 import styles from '../../styles'
 
 import MapView from 'react-native-maps';
-
 import StoreInfoCard from './StoreInfoCard';
 
+import { push_home, pop_home } from '../../actions/navigation';
+
 class TakeOut extends Component {
-  submitLoginInfo() {
-    this.props.dispatch(pop())
+  submitStoreInfo = () => {
+    this.props.dispatch(pop_home())
   }
+
+  
 
   render() {
     return (
@@ -33,10 +36,10 @@ class TakeOut extends Component {
          >
          </MapView>
          <ScrollView >
-           <StoreInfoCard/>
-           <StoreInfoCard/>
-           <StoreInfoCard/>
-           <StoreInfoCard/>
+           <StoreInfoCard onSelectStore={this.submitStoreInfo}/>
+           <StoreInfoCard onSelectStore={this.submitStoreInfo}/>
+           <StoreInfoCard onSelectStore={this.submitStoreInfo}/>
+           <StoreInfoCard onSelectStore={this.submitStoreInfo}/>
          </ScrollView>
 
 
