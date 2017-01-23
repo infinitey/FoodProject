@@ -7,14 +7,16 @@ import Icon2 from 'react-native-vector-icons/Entypo'
 
 import { connect } from 'react-redux'
 import styles from '../../styles'
+import colors from '../../colors'
 
 import MenuNavContainer from './MenuNavContainer'
+import Badge from '../../components/conceptMenu/Badge'
 
-class MenuTabContainer extends Component {
+export default class MenuTabContainer extends Component {
   constructor () {
     super()
     this.state = {
-      selectedTab: 'feed',
+      selectedTab: 'menu',
       hideTabBar: false,
     }
     this.changeTab = this.changeTab.bind(this)
@@ -35,7 +37,7 @@ class MenuTabContainer extends Component {
   render() {
     const { selectedTab } = this.state;
 
-    let tabBarStyle = {};
+    let tabBarStyle = {backgroundColor:'#000000', borderTopWidth: 1, borderColor:colors.tabIconTextColor};
     let sceneStyle = {};
 
     if(this.state.hideTabBar) {
@@ -45,22 +47,64 @@ class MenuTabContainer extends Component {
     }
 
     return (
+
       <TabNavigator hidesTabTouch tabBarStyle={tabBarStyle} sceneStyle={sceneStyle} >
 
         <TabNavigator.Item
-          titleStyle={[styles.normalText]}
-          selectedTitleStyle={{marginTop:-3, marginBottom: 7, color: colors.navHeader}}
+          titleStyle={[styles.tabText, {marginTop: -1, marginBottom: 7}]}
+          selectedTitleStyle={{color: colors.submitButtonColor}}
           selected={selectedTab === 'menu'}
-          title={selecetedTab === 'menu' ? 'MENU' : null}
-          renderIcon={ () => <Icon color={colors.contentBGColor} name='list' size={20}/>}
-          renderSelectedIcon={ () => <Icon color={colors.headerBGColor} name='list' size={20}/>}
-          onPress={() => this.changeTab('feed')}>
+          title={'Menu'}
+          renderIcon={ () => <Icon2 color={colors.tabIconTextColor} name='list' size={20}/>}
+          renderSelectedIcon={ () => <Icon2 color={colors.submitButtonColor} name='list' size={20}/>}
+          onPress={() => this.changeTab('menu')}>
+
+          <MenuNavContainer hideTabBar={this._hideTabBar.bind(this)} />
+
+        </TabNavigator.Item>
+
+        <TabNavigator.Item
+          renderBadge={() => <Badge text='3' />}
+          titleStyle={[styles.tabText, {marginTop: -1, marginBottom: 7}]}
+          selectedTitleStyle={{color: colors.submitButtonColor}}
+          selected={selectedTab === 'promotion'}
+          title={'Promotions'}
+          renderIcon={ () => <Icon2 color={colors.tabIconTextColor} name='ticket' size={20}/>}
+          renderSelectedIcon={ () => <Icon2 color={colors.submitButtonColor} name='ticket' size={20}/>}
+          onPress={() => this.changeTab('promotion')}>
+
+          <MenuNavContainer hideTabBar={this._hideTabBar.bind(this)} />
+
+        </TabNavigator.Item>
+
+        <TabNavigator.Item
+          titleStyle={[styles.tabText, {marginTop: -3, marginBottom: 7}]}
+          selectedTitleStyle={{color: colors.submitButtonColor}}
+          selected={selectedTab === 'favourite'}
+          title={'Favourites'}
+          renderIcon={ () => <Icon2 color={colors.tabIconTextColor} name='heart' size={22}/>}
+          renderSelectedIcon={ () => <Icon2 color={colors.submitButtonColor} name='heart' size={22}/>}
+          onPress={() => this.changeTab('favourite')}>
+
+          <MenuNavContainer hideTabBar={this._hideTabBar.bind(this)} />
+
+        </TabNavigator.Item>
+
+        <TabNavigator.Item
+          titleStyle={[styles.tabText, {marginTop: -1, marginBottom: 7}]}
+          selectedTitleStyle={{color: colors.submitButtonColor}}
+          selected={selectedTab === 'profile'}
+          title={'Profile'}
+          renderIcon={ () => <Icon2 color={colors.tabIconTextColor} name='user' size={20}/>}
+          renderSelectedIcon={ () => <Icon2 color={colors.submitButtonColor} name='user' size={20}/>}
+          onPress={() => this.changeTab('profile')}>
 
           <MenuNavContainer hideTabBar={this._hideTabBar.bind(this)} />
 
         </TabNavigator.Item>
 
       </TabNavigator>
+
     );
   }
 }

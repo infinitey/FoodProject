@@ -9,11 +9,12 @@ import Explore from '../../components/explore/Explore';
 import Home from '../../components/home/Home';
 import TakeOut from '../../components/home/TakeOut'
 
+import styles from '../../styles'
 
 class MenuNavContainer extends Component {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>
           HAHAHAHAHAH
         </Text>

@@ -45,6 +45,12 @@ export default StyleSheet.create({
     color: colors.primaryColor,
   },
 
+  tabText: {
+    fontFamily: fontf.primaryFont,
+    fontSize: 10,
+    color: colors.tabIconTextColor,
+  },
+  
   brandCard : {
     maxHeight: 200,
     maxWidth: null,

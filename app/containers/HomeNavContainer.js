@@ -27,13 +27,13 @@ class HomeNavContainer extends Component {
       case 'TakeOut':
         return <TakeOut />
       case 'MenuTabContainer':
-        return <MenuTabContainer/>
+        return <MenuTabContainer />
     }
   }
 
   _renderHeader = (sceneProps) => {
     const { homeNavState } = this.props
-    
+
       return (
         <Header
           pop={this.props.pop_home}

@@ -24,7 +24,7 @@ class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <HomeView onSubmitOrderType={this.onSubmitOrderType}/>
+        <HomeView onSubmitOrderType={this.onSubmitOrderType.bind(this)}/>
       </View>
     );
   }
