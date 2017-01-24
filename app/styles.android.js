@@ -50,7 +50,7 @@ export default StyleSheet.create({
     fontSize: 10,
     color: colors.tabIconTextColor,
   },
-  
+
   brandCard : {
     maxHeight: 200,
     maxWidth: null,
@@ -166,6 +166,11 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginTop:10,
     marginBottom: 10,
+  },
+
+  drawerHeader : {
+    backgroundColor: colors.headerBGColor,
+    height: 24,
   }
 
 

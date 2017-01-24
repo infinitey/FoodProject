@@ -198,4 +198,8 @@ export default StyleSheet.create({
     marginBottom: 10,
   },
 
+  drawerHeader : {
+    backgroundColor: colors.headerBGColor,
+    height: 35,
+  }
 });
