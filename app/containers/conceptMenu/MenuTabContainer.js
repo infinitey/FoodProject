@@ -10,6 +10,9 @@ import styles from '../../styles'
 import colors from '../../colors'
 
 import MenuNavContainer from './MenuNavContainer'
+import FavNavContainer from './FavNavContainer'
+import ProfileNavContainer from './ProfileNavContainer'
+import PromoNavContainer from './PromoNavContainer'
 import Badge from '../../components/conceptMenu/Badge'
 
 export default class MenuTabContainer extends Component {
@@ -73,7 +76,7 @@ export default class MenuTabContainer extends Component {
           renderSelectedIcon={ () => <Icon2 color={colors.submitButtonColor} name='ticket' size={20}/>}
           onPress={() => this.changeTab('promotion')}>
 
-          <MenuNavContainer hideTabBar={this._hideTabBar.bind(this)} />
+          <PromoNavContainer hideTabBar={this._hideTabBar.bind(this)} />
 
         </TabNavigator.Item>
 
@@ -86,7 +89,7 @@ export default class MenuTabContainer extends Component {
           renderSelectedIcon={ () => <Icon2 color={colors.submitButtonColor} name='heart' size={22}/>}
           onPress={() => this.changeTab('favourite')}>
 
-          <MenuNavContainer hideTabBar={this._hideTabBar.bind(this)} />
+          <FavNavContainer hideTabBar={this._hideTabBar.bind(this)} />
 
         </TabNavigator.Item>
 
@@ -99,7 +102,7 @@ export default class MenuTabContainer extends Component {
           renderSelectedIcon={ () => <Icon2 color={colors.submitButtonColor} name='user' size={20}/>}
           onPress={() => this.changeTab('profile')}>
 
-          <MenuNavContainer hideTabBar={this._hideTabBar.bind(this)} />
+          <ProfileNavContainer hideTabBar={this._hideTabBar.bind(this)} />
 
         </TabNavigator.Item>
 

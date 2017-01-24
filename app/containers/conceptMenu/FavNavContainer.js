@@ -11,16 +11,16 @@ import TakeOut from '../../components/home/TakeOut'
 
 import styles from '../../styles'
 
-class MenuNavContainer extends Component {
+class FavNavContainer extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Text>
-          MENU
+          FAVOURITES
         </Text>
       </View>
     );
   }
 }
 
-export default MenuNavContainer;
+export default FavNavContainer;

@@ -11,16 +11,16 @@ import TakeOut from '../../components/home/TakeOut'
 
 import styles from '../../styles'
 
-class MenuNavContainer extends Component {
+class ProfileNavContainer extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Text>
-          MENU
+          PROFILE
         </Text>
       </View>
     );
   }
 }
 
-export default MenuNavContainer;
+export default ProfileNavContainer;
