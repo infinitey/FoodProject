@@ -15,25 +15,27 @@ import ProductDesc from '../../components/conceptMenu/ProductDesc'
 import styles from '../../styles'
 
 class MenuNavContainer extends Component {
-  createProduct () {
-      <ProductDesc
-        productName='Product name'
-        productCost='$99.88'
-        productQty='8X'
-        productDesc='This is a description that I clearly do not know how to type. Please advise me how to type this description properly'
-      />
-  }
+
 
   render() {
+    const createProduct = <ProductDesc
+        productName='Test Product'
+        productCost='$99.88'
+        productQty='8X'
+        productDesc='This is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advi  se me how to type this description properly　'
+      />;
+
+    const createProduct2 = <ProductDesc
+        productName='Test2 Product'
+        productCost='$99.88'
+        productQty='8X'
+        productDesc='This is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advi  se me how to type this description properly　'
+      />;
+
     return (
-      <View style={styles.container}>
-        <Drawer categoryName='Category 1' contentView={this.createProduct.bind(this)} />
-        <ProductDesc
-          productName='Product name'
-          productCost='$99.88'
-          productQty='8X'
-          productDesc='This is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advise me how to type this description properly'
-        />
+      <View style={[styles.container]}>
+        <Drawer categoryName='Category 1' contentView={createProduct} />
+        <Drawer categoryName='Category 1' contentView={createProduct2} />
       </View>
     );
   }
