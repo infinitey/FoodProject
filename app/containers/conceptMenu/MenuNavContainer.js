@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, NavigationExperimental } from 'react-native';
+import { View, Text, ScrollView, NavigationExperimental } from 'react-native';
 import { connect } from 'react-redux';
 
 import { push, pop } from '../../actions/navigation';
@@ -32,10 +32,38 @@ class MenuNavContainer extends Component {
         productDesc='This is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advi  se me how to type this description properly　'
       />;
 
+    let productA = {
+      id: 0,
+      name: 'Product A',
+      cost: '$99.88',
+      qty: '8X',
+      desc: 'This is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advi  se me how to type this description properly'
+    }
+
+    let productB = {
+      id: 1,
+      name: 'Product B',
+      cost: '$88.88',
+      qty: '2X',
+      desc: 'This is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advi  se me how to type this description properly'
+    }
+
+    let productC = {
+      id: 2,
+      name: 'Product C',
+      cost: '$88.88',
+      qty: '2X',
+      desc: 'This is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advi  se me how to type this description properly'
+    }
+
     return (
       <View style={[styles.container]}>
-        <Drawer categoryName='Category 1' contentView={createProduct} />
-        <Drawer categoryName='Category 1' contentView={createProduct2} />
+        <ScrollView>
+          <Drawer categoryName='Category 1' products={[productA, productB]} />
+          <Drawer categoryName='Category 1' products={[productA, productB, productC]} />
+          <Drawer categoryName='Category 1' products={[productA, productB]} />
+          <Drawer categoryName='Category 1' products={[productA, productB, productC]} />
+        </ScrollView>
       </View>
     );
   }
