@@ -8,6 +8,7 @@ export default StyleSheet.create({
 
   navHeader: {
     backgroundColor: colors.headerBGColor,
+    maxHeight: 64,
   },
 
   navHeaderText: {

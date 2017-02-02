@@ -15,7 +15,17 @@ import ProductDesc from '../../components/conceptMenu/ProductDesc'
 import styles from '../../styles'
 
 class MenuNavContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      noOfCategory: 4,
+      noOfRevealedProduct:0,
+    }
+  }
 
+  calculateHeight() {
+    categoryHeight= 4 * 35;
+  }
 
   render() {
     const createProduct = <ProductDesc
@@ -56,13 +66,15 @@ class MenuNavContainer extends Component {
       desc: 'This is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advise me how to type this description properlyThis is a description that I clearly do not know how to type. Please advi  se me how to type this description properly'
     }
 
+    let _scrollToBottomY
+
     return (
       <View style={[styles.container]}>
         <ScrollView>
           <Drawer categoryName='Category 1' products={[productA, productB]} />
-          <Drawer categoryName='Category 1' products={[productA, productB, productC]} />
-          <Drawer categoryName='Category 1' products={[productA, productB]} />
-          <Drawer categoryName='Category 1' products={[productA, productB, productC]} />
+          <Drawer categoryName='Category 2' products={[productA, productB, productC]} />
+          <Drawer categoryName='Category 3' products={[productA, productB]} />
+          <Drawer categoryName='Category 4' products={[productA, productB, productC]} />
         </ScrollView>
       </View>
     );

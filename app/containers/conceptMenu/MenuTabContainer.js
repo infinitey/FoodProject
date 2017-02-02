@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { View, Dimensions } from 'react-native'
 
 import TabNavigator from 'react-native-tab-navigator'
 import Icon from 'react-native-vector-icons/Zocial'
@@ -36,7 +36,7 @@ export default class MenuTabContainer extends Component {
       hideTabBar: value
     });
   }
-
+  
   render() {
     const { selectedTab } = this.state;
 
@@ -51,7 +51,12 @@ export default class MenuTabContainer extends Component {
 
     return (
 
-      <TabNavigator hidesTabTouch tabBarStyle={tabBarStyle} sceneStyle={sceneStyle} >
+      <TabNavigator
+        ref='menuTab'
+        hidesTabTouch
+        tabBarStyle={tabBarStyle}
+        sceneStyle={sceneStyle}
+      >
 
         <TabNavigator.Item
           titleStyle={[styles.tabText, {marginTop: -1, marginBottom: 7}]}
