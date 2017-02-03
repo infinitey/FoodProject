@@ -14,7 +14,9 @@ import colors from '../../colors'
 import Icon2 from 'react-native-vector-icons/Entypo'
 import ProductDesc from '../conceptMenu/ProductDesc'
 
-export default class Drawer extends Component {
+import { connect } from 'react-redux';
+
+class Drawer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,16 +35,28 @@ export default class Drawer extends Component {
       this.state.toCheckView &&
       (128 + y + height) > Dimensions.get('window').height)
     {
-      console.log('It\'s time to shift the view down!')
+      return "HAHAH";
     }
 
     this.setState({toCheckView:false})
   }
+  //(event) => { this.logDrawerLayout(event.nativeEvent.layout) }
 
+  calculateYToMove(layout) {
+    const {x, y, width, height} = layout;
+
+    if(this.state.isDrawerOpen && this.state.toCheckView &&
+      y !== 0 &&
+      (y + height) > Dimensions.get('window').height)
+    {
+      console.log(y - (Dimensions.get('window').height - 90 - height))
+      return y - (Dimensions.get('window').height - 90 - height);
+    }
+  }
   render() {
 
     return(
-      <View ref='drawer' onLayout={(event) => { this.logDrawerLayout(event.nativeEvent.layout) }}>
+      <View ref='drawer' onLayout={ (event) => {this.props.onChangeScroll(this.calculateYToMove(event.nativeEvent.layout))} }>
         <View style={[styles.drawerHeader]}>
 
           <View style={{flex: 1,flexDirection:'row'}}>
@@ -85,3 +99,5 @@ export default class Drawer extends Component {
     );
   }
 }
+
+export default connect()(Drawer)

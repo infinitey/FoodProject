@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, ScrollView, NavigationExperimental } from 'react-native';
+import { Dimensions, View, Text, ScrollView, NavigationExperimental } from 'react-native';
 import { connect } from 'react-redux';
 
 import { push, pop } from '../../actions/navigation';
@@ -20,11 +20,32 @@ class MenuNavContainer extends Component {
     this.state = {
       noOfCategory: 4,
       noOfRevealedProduct:0,
+      data: 'default',
     }
   }
 
   calculateHeight() {
     categoryHeight= 4 * 35;
+  }
+
+  scrollDown (height) {
+    this.refs.scrollView.scrollTo({x:0, y:height, animated:false})
+  }
+
+  logDrawerLayout(contentWidth, contentHeight) {
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    console.log("contentWidth: " + contentWidth);
+    console.log("contentHeight: " + contentHeight);
+    if(contentHeight > 560)
+    {
+      let height = contentHeight - 560
+      this.scrollDown(height)
+    }
+  }
+
+  onChangeScroll = (data) => {
+      console.log(data);
+      this.scrollDown(data)
   }
 
   render() {
@@ -69,12 +90,13 @@ class MenuNavContainer extends Component {
     let _scrollToBottomY
 
     return (
-      <View style={[styles.container]}>
-        <ScrollView>
-          <Drawer categoryName='Category 1' products={[productA, productB]} />
-          <Drawer categoryName='Category 2' products={[productA, productB, productC]} />
-          <Drawer categoryName='Category 3' products={[productA, productB]} />
-          <Drawer categoryName='Category 4' products={[productA, productB, productC]} />
+      <View style={[styles.container]} >
+
+        <ScrollView ref='scrollView' >
+          <Drawer categoryName='Category 1' onChangeScroll={this.onChangeScroll} products={[productA, productB]} />
+          <Drawer categoryName='Category 2' onChangeScroll={this.onChangeScroll} products={[productA, productB, productC]} />
+          <Drawer categoryName='Category 3' onChangeScroll={this.onChangeScroll} products={[productA, productB]} />
+          <Drawer categoryName='Category 4' onChangeScroll={this.onChangeScroll} products={[productA, productB, productC]} />
         </ScrollView>
       </View>
     );
