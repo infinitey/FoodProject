@@ -22,37 +22,36 @@ class Drawer extends Component {
     this.state = {
       isDrawerOpen : false,
       wHeight: Dimensions.get('window').height,
-      toCheckView: false
+      toCheckView: false,
+      drawerHeight: 0,
     }
   }
 
-  logDrawerLayout(layout) {
-    const {x, y, width, height} = layout;
-    console.log("--------------------------");
-    console.log(this.state);
-
-    if(this.state.isDrawerOpen &&
-      this.state.toCheckView &&
-      (128 + y + height) > Dimensions.get('window').height)
-    {
-      return "HAHAH";
-    }
-
-    this.setState({toCheckView:false})
-  }
   //(event) => { this.logDrawerLayout(event.nativeEvent.layout) }
 
   calculateYToMove(layout) {
     const {x, y, width, height} = layout;
 
-    if(this.state.isDrawerOpen && this.state.toCheckView &&
-      y !== 0 &&
-      (y + height) > Dimensions.get('window').height)
-    {
-      console.log(y - (Dimensions.get('window').height - 90 - height))
-      return y - (Dimensions.get('window').height - 90 - height);
+    this.setState({drawerHeight: height})
+
+    if(this.state.isDrawerOpen &&
+      y !== 0　&&
+      height > this.state.drawerHeight
+    ) {
+      console.log("==============================" );
+      console.log("y: " + y);
+      console.log("height: " + height )
+      let moveTo = (y + height + 145) - Dimensions.get('window').height
+
+      //y - height + 50
+
+      if(moveTo < 0 || (y+height)< Dimensions.get('window').height) moveTo = 0
+
+      console.log("Moving To: " + moveTo)
+      return moveTo;
     }
   }
+
   render() {
 
     return(

@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { push, pop } from '../actions/navigation';
 import { push_home, pop_home } from '../actions/navigation';
 
-import Header from '../components/headers/NavHeader';
+import Header from '../components/headers/HomeNavHeader';
+
 import Explore from '../components/explore/Explore';
 import Home from '../components/home/Home';
 import TakeOut from '../components/home/TakeOut'
@@ -14,7 +15,6 @@ import MenuTabContainer from './conceptMenu/MenuTabContainer'
 const {
   CardStack: NavigationCardStack,
 } = NavigationExperimental
-
 
 
 class HomeNavContainer extends Component {
@@ -36,7 +36,7 @@ class HomeNavContainer extends Component {
 
       return (
         <Header
-          pop={this.props.pop_home}
+          pop={this.props.pop}
           push={this.props.push_home}
           {...sceneProps}
         />

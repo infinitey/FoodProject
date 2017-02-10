@@ -91,7 +91,18 @@ class MenuNavContainer extends Component {
 
     return (
       <View style={[styles.container]} >
+        <View style={styles.orderAddressBar}>
+          <View>
+            <Text style={[styles.tabText, {color: '#FFFFFF'}]}>Delivery: dd/mm/yyyy at hh:mm </Text>
 
+            <Text style={[styles.tabText, {color: '#FFFFFF'}]}>Address, City - Postal code</Text>
+          </View>
+
+          <View style={{flex:1, flexDirection:'row-reverse'}}>
+            <Text style={[styles.tabText, { color: '#FFFFFF', padding:2, borderWidth:1, borderRadius:2, borderColor:'#FFFFFF', alignSelf:'center'}]}> EDIT</Text>
+          </View>
+
+        </View>
         <ScrollView ref='scrollView' >
           <Drawer categoryName='Category 1' onChangeScroll={this.onChangeScroll} products={[productA, productB]} />
           <Drawer categoryName='Category 2' onChangeScroll={this.onChangeScroll} products={[productA, productB, productC]} />

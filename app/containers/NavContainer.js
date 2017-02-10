@@ -49,7 +49,9 @@ class NavContainer extends Component {
   _renderHeader = (sceneProps) => {
     const { navState } = this.props
 
-    if(navState.prevPushedRoute && navState.prevPushedRoute.key === 'HomeNavContainer') {
+    if(navState.index!=0 &&
+      navState.prevPushedRoute &&
+      navState.prevPushedRoute.key === 'HomeNavContainer') {
       return
     }
     else {

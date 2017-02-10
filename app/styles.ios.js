@@ -166,6 +166,11 @@ export default StyleSheet.create({
     marginTop:15
   },
 
+  cartButton : {
+    marginRight:15,
+    marginTop:15
+  },
+
   bigIconContainer : {
     margin:20,
     alignSelf: 'center',
@@ -202,5 +207,12 @@ export default StyleSheet.create({
   drawerHeader : {
     backgroundColor: colors.headerBGColor,
     height: 35,
+  },
+
+  orderAddressBar : {
+    backgroundColor : colors.submitButtonColor,
+    height : 40,
+    padding: 6,
+    flexDirection: 'row',
   }
 });
