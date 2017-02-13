@@ -5,12 +5,17 @@ import { connect } from 'react-redux';
 import { push, pop } from '../actions/navigation';
 import { push_home, pop_home } from '../actions/navigation';
 
-import Header from '../components/headers/HomeNavHeader';
+import HomeHeader from '../components/headers/HomeNavHeader';
+import Header from '../components/headers/NavHeader';
+import ModalHeader from '../components/headers/ModalHeader';
 
 import Explore from '../components/explore/Explore';
 import Home from '../components/home/Home';
 import TakeOut from '../components/home/TakeOut'
 import MenuTabContainer from './conceptMenu/MenuTabContainer'
+
+import CartModal from '../components/conceptMenu/CartModal'
+import ProductModal from '../components/conceptMenu/ProductModal'
 
 const {
   CardStack: NavigationCardStack,
@@ -28,19 +33,49 @@ class HomeNavContainer extends Component {
         return <TakeOut />
       case 'MenuTabContainer':
         return <MenuTabContainer />
+      case 'CartModal':
+        return <CartModal />
+      case 'ProductModal':
+        return <ProductModal />
     }
   }
 
   _renderHeader = (sceneProps) => {
     const { homeNavState } = this.props
 
-      return (
+    if(homeNavState.prevPushedRoute && homeNavState.prevPushedRoute.key === 'CartModal' &&
+      homeNavState.prevPushedRoute.key === homeNavState.routes[homeNavState.index].key)
+    {
+      // render modal header
+      return(
         <Header
+          pop={this.props.pop_home}
+          {...sceneProps}
+        />
+      );
+    }
+    else if(homeNavState.prevPushedRoute && homeNavState.prevPushedRoute.key === 'ProductModal' &&
+      homeNavState.prevPushedRoute.key === homeNavState.routes[homeNavState.index].key)
+    {
+      // render modal header
+      return(
+        <ModalHeader
+          pop={this.props.pop_home}
+          {...sceneProps}
+        />
+      );
+    }
+    else{
+      return (
+        <HomeHeader
           pop={this.props.pop}
           push={this.props.push_home}
           {...sceneProps}
         />
       );
+    }
+
+
 
   }
 
@@ -48,6 +83,11 @@ class HomeNavContainer extends Component {
   render() {
     const { homeNavState } = this.props
     let direction = 'horizontal'
+
+    if(homeNavState.prevPushedRoute && homeNavState.prevPushedRoute.key === 'ProductModal')
+    {
+        direction='vertical'
+    }
 
     return (
       <NavigationCardStack
