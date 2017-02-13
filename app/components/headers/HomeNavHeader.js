@@ -26,7 +26,7 @@ class Header extends Component {
   }
 
   _cart = () => {
-      this.props.push({key: 'CartModal'});
+      this.props.push({key: 'CartModal', type:'modal'});
   }
 
   _renderTitleComponent= (props) => {

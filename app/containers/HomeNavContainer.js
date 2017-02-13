@@ -43,7 +43,7 @@ class HomeNavContainer extends Component {
   _renderHeader = (sceneProps) => {
     const { homeNavState } = this.props
 
-    if(homeNavState.prevPushedRoute && homeNavState.prevPushedRoute.key === 'CartModal' &&
+    if(homeNavState.prevPushedRoute && homeNavState.prevPushedRoute.type === 'modal' &&
       homeNavState.prevPushedRoute.key === homeNavState.routes[homeNavState.index].key)
     {
       // render modal header
