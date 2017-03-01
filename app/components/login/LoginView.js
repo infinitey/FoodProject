@@ -30,7 +30,12 @@ class LoginView extends Component {
     email: '',
     password: '',
     isAuthenticating: false,
-    error: ''
+    error: '',
+    grant_type: 'authorization_code',
+    client_id: 'sYwz9ItiZnmzmPrHW2tLkif6EPW1EChkfpnX4B4d',
+    client_secret: 'C4TBnu4nLg_G8x26bDYaiJCGCu7P56e1dpV1X5EVvg6l9BioJiw',
+    code: 'c8d24de0c930403a801fb869abc6173e',
+    redirect_uri: 'perky://'
   }
 
 
@@ -68,7 +73,13 @@ class LoginView extends Component {
           <Text style={styles.questionText}>FORGOT PASSWORD?</Text>
         </TouchableOpacity>
 
-        <TouchableHighlight  style={styles.button} onPress={this.props.onPress.bind(this, this.state.email, this.state.password)}>
+        <TouchableHighlight  style={styles.button} onPress={this.props.onPress.bind(this,
+          this.state.grantType,
+          this.state.clientId,
+          this.state.clientSecret,
+          this.state.code,
+          this.state.redirectUri
+        )}>
           <Text style={styles.buttonText}>LOGIN</Text>
         </TouchableHighlight>
 
