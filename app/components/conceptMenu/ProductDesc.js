@@ -9,14 +9,23 @@ import {
 import styles from '../../styles'
 import colors from '../../colors'
 
-export default class ProductDesc extends Component {
+import { connect } from 'react-redux';
+
+import { push, pop } from '../../actions/navigation';
+import { push_home, pop_home } from '../../actions/navigation';
+
+class ProductDesc extends Component {
+
+  _viewProduct = () => {
+      this.props.push_home({key: 'ProductModal', type:'modal'});
+  }
 
   render() {
     return (
 
           <View style={[styles.container, {flexDirection:'row', minHeight:90}]}>
 
-            <TouchableOpacity style={{backgroundColor: colors.submitButtonColor, flex:1, alignItems:'center', justifyContent:'center'}}>
+            <TouchableOpacity onPress={this._viewProduct} style={{backgroundColor: colors.submitButtonColor, flex:1, alignItems:'center', justifyContent:'center'}}>
               <Text style={[styles.normalText, {}]}>
                 {this.props.productQty}
               </Text>
@@ -54,3 +63,17 @@ export default class ProductDesc extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  homeNavState: state.homeNavState,
+})
+
+export default connect(
+  mapStateToProps,
+  {
+    push_home: (route) => push_home(route),
+    pop_home: () => pop_home(),
+    push: (route) => push(route),
+    pop: () => pop(),
+  }
+) (ProductDesc);

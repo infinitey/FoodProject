@@ -1,8 +1,16 @@
 import React, { Component, PropTypes } from 'react';
-import { Dimensions, View, Text, ScrollView, NavigationExperimental } from 'react-native';
+import {
+  Dimensions,
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  NavigationExperimental
+} from 'react-native';
 import { connect } from 'react-redux';
 
 import { push, pop } from '../../actions/navigation';
+import { push_home, pop_home } from '../../actions/navigation';
 
 import Header from '../../components/headers/NavHeader';
 import Explore from '../../components/explore/Explore';
@@ -13,6 +21,11 @@ import Drawer from '../../components/drawer/Drawer'
 import ProductDesc from '../../components/conceptMenu/ProductDesc'
 
 import styles from '../../styles'
+
+const {
+  CardStack: NavigationCardStack,
+} = NavigationExperimental
+
 
 class MenuNavContainer extends Component {
   constructor(props) {
@@ -46,6 +59,10 @@ class MenuNavContainer extends Component {
   onChangeScroll = (data) => {
       console.log(data);
       this.scrollDown(data)
+  }
+
+  _editAddress = () => {
+      this.props.push_home({key: 'AddressModal', type:'modal'});
   }
 
   render() {
@@ -98,9 +115,14 @@ class MenuNavContainer extends Component {
             <Text style={[styles.tabText, {color: '#FFFFFF'}]}>Address, City - Postal code</Text>
           </View>
 
+
           <View style={{flex:1, flexDirection:'row-reverse'}}>
-            <Text style={[styles.tabText, { color: '#FFFFFF', padding:2, borderWidth:1, borderRadius:2, borderColor:'#FFFFFF', alignSelf:'center'}]}> EDIT</Text>
+            <TouchableOpacity onPress={this._editAddress}>
+              <Text style={[styles.tabText, { color: '#FFFFFF', padding:2, borderWidth:1, borderRadius:2, borderColor:'#FFFFFF', alignSelf:'center'}]}> EDIT</Text>
+            </TouchableOpacity>
           </View>
+
+
 
         </View>
         <ScrollView ref='scrollView' >
@@ -114,4 +136,14 @@ class MenuNavContainer extends Component {
   }
 }
 
-export default MenuNavContainer;
+const mapStateToProps = (state) => ({
+  homeNavState: state.homeNavState,
+})
+
+export default connect(
+  mapStateToProps,
+  {
+    push_home: (route) => push_home(route),
+    pop_home: () => pop_home(),
+  }
+) (MenuNavContainer);

@@ -16,6 +16,7 @@ import MenuTabContainer from './conceptMenu/MenuTabContainer'
 
 import CartModal from '../components/conceptMenu/CartModal'
 import ProductModal from '../components/conceptMenu/ProductModal'
+import AddressModal from '../components/conceptMenu/AddressModal'
 
 const {
   CardStack: NavigationCardStack,
@@ -37,6 +38,8 @@ class HomeNavContainer extends Component {
         return <CartModal />
       case 'ProductModal':
         return <ProductModal />
+      case 'AddressModal':
+        return <AddressModal />
     }
   }
 
@@ -48,18 +51,18 @@ class HomeNavContainer extends Component {
     {
       // render modal header
       return(
-        <Header
+        <ModalHeader
           pop={this.props.pop_home}
           {...sceneProps}
         />
       );
     }
-    else if(homeNavState.prevPushedRoute && homeNavState.prevPushedRoute.key === 'ProductModal' &&
+    else if(homeNavState.prevPushedRoute && homeNavState.prevPushedRoute.key === 'CartModal' &&
       homeNavState.prevPushedRoute.key === homeNavState.routes[homeNavState.index].key)
     {
       // render modal header
       return(
-        <ModalHeader
+        <Header
           pop={this.props.pop_home}
           {...sceneProps}
         />
@@ -75,8 +78,6 @@ class HomeNavContainer extends Component {
       );
     }
 
-
-
   }
 
 
@@ -84,7 +85,7 @@ class HomeNavContainer extends Component {
     const { homeNavState } = this.props
     let direction = 'horizontal'
 
-    if(homeNavState.prevPushedRoute && homeNavState.prevPushedRoute.key === 'ProductModal')
+    if(homeNavState.prevPushedRoute && homeNavState.prevPushedRoute.type === 'modal')
     {
         direction='vertical'
     }

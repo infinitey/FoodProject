@@ -4,13 +4,15 @@ import {
   Text,
   NavigationExperimental,
   Image,
-  TouchableHighlight
+  TouchableOpacity
 } from 'react-native'
 
 const {
   Header: NavigationHeader,
 } = NavigationExperimental
 
+import styles from '../../styles'
+import Icon2 from 'react-native-vector-icons/Entypo'
 
 class Header extends Component {
   _back = () => {

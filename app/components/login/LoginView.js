@@ -17,6 +17,7 @@ import Icon2 from 'react-native-vector-icons/Entypo'
 import Spinner from 'react-native-loading-spinner-overlay';
 import { connect } from 'react-redux'
 
+
 import styles from '../../styles'
 // const mapStateToProps = (state) => ({
 //   isAuthenticating: state.user.isAuthenticating,
@@ -32,9 +33,6 @@ class LoginView extends Component {
     error: ''
   }
 
-  onPressSignUp() {
-
-  }
 
   render() {
     return (
@@ -82,6 +80,7 @@ class LoginView extends Component {
           <Icon.Button name="googleplus" style={styles.googleIconButton}  onPress={this.props.onPress.bind(this, this.state.email, this.state.password)}>
             <Text style={styles.buttonText}>LOGIN WITH GOOGLE+</Text>
           </Icon.Button>
+          <Spinner visible={this.state.isAuthenticating} />
         </View>
 
         <View style={[styles.standardMargin, {flexDirection:'row'}, {alignSelf:'center'}]}>

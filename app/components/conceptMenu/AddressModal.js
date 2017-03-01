@@ -9,13 +9,13 @@ import {
 import styles from '../../styles'
 import colors from '../../colors'
 
-export default class ProductModal extends Component {
+export default class AddressModal extends Component {
 
   render() {
     return (
           <View style={styles.container}>
             <Text>
-              PRODUCT MODAL
+              ADDRESS MODAL
             </Text>
           </View>
     );
