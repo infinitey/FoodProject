@@ -66,7 +66,7 @@ class Login extends Component {
 
     */
 
-    fetch('https://www.sandbox.arcadier.io/token/', {
+    /*fetch('https://www.sandbox.arcadier.io/token/', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -80,6 +80,22 @@ class Login extends Component {
         redirect_uri: 'perky://main', //redirect to server
       })
     })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      console.log(responseJson);
+    })
+    .catch((error) => {
+      console.warn(error);
+    })
+
+    https://example.sandbox.arcadier.io/api/account/externallogin?provider=Google&response_type=code&client_id=<your_client_id>&scope=basic&redirect_uri=http://localhost:8080/apitoken
+
+    */
+
+
+    let url = 'https://www.sandbox.arcadier.io/api/account/externallogin?provider=Google&response_type=code&client_id=sYwz9ItiZnmzmPrHW2tLkif6EPW1EChkfpnX4B4d&scope=basic&redirect_uri=https://192.168.0.114/apitoken'
+
+    fetch(url)
     .then((response) => response.json())
     .then((responseJson) => {
       console.log(responseJson);
